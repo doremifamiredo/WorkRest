@@ -4,6 +4,23 @@ public class Main {
 
     public static void main(String[] args) {
         WorkRestService service = new WorkRestService();
-        service.calcBalance(10_000, 3_000, 20_000);
+        int balance;
+        int money = 0;
+        int income = 10_000;
+        int expenses = 3_000;
+        int threshold = 20_000;
+        for (int month = 1; month < 13; month++) {
+            balance = service.calcBalance(money, income, expenses, threshold);
+            if (money >= threshold) {
+                System.out.println("Месяц " + month + ". Денег " + money + ". Буду отдыхать. Потратил -" + expenses + ", а затем ещё -" + balance);
+                money = money - balance - expenses;
+            } else {
+                System.out.println("Месяц " + month + ". Денег " + money + ". Придётся работать. Заработал +" + income + ", потратил -" + expenses);
+                money = money + balance;
+            }
+
+        }
+
     }
+
 }

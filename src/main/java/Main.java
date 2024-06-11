@@ -9,18 +9,23 @@ public class Main {
         int income = 10_000;
         int expenses = 3_000;
         int threshold = 20_000;
+        int restMonth =0;
         for (int month = 1; month < 13; month++) {
-            balance = service.calcBalance(money, income, expenses, threshold);
             if (money >= threshold) {
+                balance = money - ((money - expenses) / 3) - expenses;
                 System.out.println("Месяц " + month + ". Денег " + money + ". Буду отдыхать. Потратил -" + expenses + ", а затем ещё -" + balance);
                 money = money - balance - expenses;
             } else {
+                balance = income - expenses;
                 System.out.println("Месяц " + month + ". Денег " + money + ". Придётся работать. Заработал +" + income + ", потратил -" + expenses);
                 money = money + balance;
             }
-
         }
-
+         money = 0;
+         income = 10_000;
+         expenses = 3_000;
+         threshold = 20_000;
+        restMonth = service.calcRest(money, income, expenses, threshold, restMonth);
+        System.out.println(restMonth);
     }
-
 }

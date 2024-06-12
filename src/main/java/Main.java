@@ -9,7 +9,6 @@ public class Main {
         int income = 10_000;
         int expenses = 3_000;
         int threshold = 20_000;
-        int restMonth =0;
         for (int month = 1; month < 13; month++) {
             if (money >= threshold) {
                 balance = money - ((money - expenses) / 3) - expenses;
@@ -21,11 +20,10 @@ public class Main {
                 money = money + balance;
             }
         }
-         money = 0;
          income = 10_000;
          expenses = 3_000;
          threshold = 20_000;
-        restMonth = service.calcRest(money, income, expenses, threshold, restMonth);
-        System.out.println(restMonth);
+        byte restMonth = service.calcRest(income, expenses, threshold);
+        System.out.println("Месяцев отдыха: " + restMonth);
     }
 }

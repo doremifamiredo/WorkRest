@@ -20,9 +20,6 @@ public class Main {
                 money = money + balance;
             }
         }
-         income = 10_000;
-         expenses = 3_000;
-         threshold = 20_000;
         byte restMonth = service.calcRest(income, expenses, threshold);
         System.out.println("Месяцев отдыха: " + restMonth);
     }
